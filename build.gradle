@@ -1,0 +1,50 @@
+plugins {
+  id 'net.researchgate.release' version '2.3.4'
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.monetate'
+description = """druid-ingestion"""
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "https://repository.apache.org/content/repositories/orgapachespark-1164/"
+    }
+}
+
+release {
+    versionPropertyFile = 'gradle.properties'
+    buildTasks = ['build']
+    scmAdapters = [
+        net.researchgate.release.GitAdapter
+    ]
+    git {
+        requireBranch = 'master'
+        pushToRemote = 'origin'
+        pushToBranchPrefix = ''
+    }
+}
+
+configurations {
+    all*.exclude group: 'org.eclipse.jetty.orbit', module: 'javax.servlet'
+    all*.exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
+    all*.exclude group: 'org.slf4j', module: 'slf4j-simple'
+    all*.exclude group: 'log4j', module: 'log4j'
+}
+
+dependencies {
+    compile (group:'io.druid', name:'tranquility-core_2.10', version:'0.7.2')
+    compile (group:'io.druid', name:'druid-indexing-service', version:'0.8.3')
+    compile (group:'com.twitter', name:'finagle-core_2.10', version:'6.25.0')
+    compile (group:'com.metamx', name:'java-util', version:'0.27.5')
+    compile (group:'org.yaml', name:'snakeyaml', version:'1.16')
+    compile (group:'com.opencsv', name:'opencsv', version:'3.4')
+    testCompile group: 'junit', name:'junit', version:'4.10'
+}

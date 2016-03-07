@@ -1,0 +1,36 @@
+{
+	"dataSchema": {
+		"dataSource": "simple",
+		"parser": {
+			"type": "string",
+			"parseSpec": {
+				"format": "csv",
+				"listDelimiter": "|",
+				"columns": [
+					"account_id",
+					"stime",
+					"os",
+					"products",
+					"cost"
+				],
+				"timestampSpec": {
+					"column": "stime",
+					"format": "yyyy-MM-dd HH:mm:ss"
+				},
+				"dimensionsSpec": {
+					"dimensions": [
+						"account_id",
+					        "stime",
+						"os",
+						"products",
+						"cost"
+					]
+				}
+			}
+		},
+		"metricsSpec": [{
+			"type": "count",
+			"name": "count"
+		}]
+	}
+}

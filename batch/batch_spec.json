@@ -1,0 +1,63 @@
+{
+    "type": "index",
+    "spec": {
+        "dataSchema": {
+            "dataSource": "simple",
+            "parser": {
+                "type": "string",
+                "parseSpec": {
+                    "format": "csv",
+                    "listDelimiter": "|",
+                    "columns": [
+                            "account_id",
+                            "stime",
+                            "os",
+                            "products",
+                            "cost"
+                    ],
+                    "timestampSpec": {
+                        "column": "stime",
+                        "format": "yyyy-MM-dd HH:mm:ss"
+                    },
+                    "dimensionsSpec": {
+                        "dimensions": [
+                            "account_id",
+                            "os",
+                            "products",
+                            "cost"
+                        ]
+                    }
+                }
+            },
+            "metricsSpec": [
+                {
+                    "type": "count",
+                    "name": "count"
+                },
+                {
+                    "type": "doubleSum",
+                    "name": "total_cost",
+                    "fieldName": "cost"
+                }
+            ],
+            "granularitySpec": {
+                "type": "uniform",
+                "intervals": [ "2015-08-01/2015-08-02" ],
+                "segmentGranularity": "HOUR"
+            }
+      },
+    "ioConfig": {
+      "type": "index",
+      "firehose": {
+        "type": "local",
+        "baseDir": "/vagrant/data/",
+        "filter": "small.csv"
+      }
+    },
+    "tuningConfig": {
+      "type": "index",
+      "targetPartitionSize": 0,
+      "rowFlushBoundary": 0
+    }
+}
+}

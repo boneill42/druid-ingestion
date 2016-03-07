@@ -1,0 +1,30 @@
+{
+  "queryType": "topN",
+  "dataSource": "rt4",
+  "intervals": [
+    "2013-08-01T00:00/2016-08-02T00:00"
+  ],
+  "granularity": "all",
+  "context": {
+    "timeout": 30000
+  },
+  "filter": {
+    "type": "selector",
+    "dimension": "account_id",
+    "value": "7"
+  },
+  "aggregations": [
+    {
+      "name": "count",
+      "type": "doubleSum",
+      "fieldName": "count"
+    }
+  ],
+  "dimension": {
+    "type": "default",
+    "dimension": "products",
+    "outputName": "SEGMENT"
+  },
+  "metric": "count",
+  "threshold": 50
+}
