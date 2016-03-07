@@ -15,8 +15,13 @@ You should be able to see a real-time task submitted on:
 http://192.168.50.4:8081/
 
 You can query for the results with:
-```query_offers.sh```
+```shell
+$queries/query_offers.sh
+```
 
 ## Batch Ingest
 
-Simply run ```batch_ingest.sh```
+Simply run:
+```shell
+$batch/batch_ingest.sh
+```
