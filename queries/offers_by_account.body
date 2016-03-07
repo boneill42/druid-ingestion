@@ -1,6 +1,6 @@
 {
   "queryType": "topN",
-  "dataSource": "rt4",
+  "dataSource": "batch",
   "intervals": [
     "2013-08-01T00:00/2016-08-02T00:00"
   ],

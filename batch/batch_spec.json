@@ -2,7 +2,7 @@
     "type": "index",
     "spec": {
         "dataSchema": {
-            "dataSource": "simple",
+            "dataSource": "batch",
             "parser": {
                 "type": "string",
                 "parseSpec": {
@@ -50,8 +50,8 @@
       "type": "index",
       "firehose": {
         "type": "local",
-        "baseDir": "/vagrant/data/",
-        "filter": "small.csv"
+        "baseDir": ".",
+        "filter": "data.csv"
       }
     },
     "tuningConfig": {

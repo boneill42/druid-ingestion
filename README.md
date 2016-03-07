@@ -16,12 +16,13 @@ http://192.168.50.4:8081/
 
 You can query for the results with:
 ```shell
-$queries/query_offers.sh
+$> queries/query_offers.sh
 ```
 
 ## Batch Ingest
 
 Simply run:
 ```shell
-$batch/batch_ingest.sh
+$> batch/copy_data.sh
+$> batch/batch_ingest.sh
 ```
