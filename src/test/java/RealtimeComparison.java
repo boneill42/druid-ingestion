@@ -44,8 +44,8 @@ public class RealtimeComparison {
     public QueryGranularity queryGranularity;
     public static CSVParser CSV_PARSER = new CSVParser();
 
-    public static final String DATA_FILE = "data.csv";
-    public static final String SPEC_FILE = "realtime_spec.json";
+    public static final String DATA_FILE = "data/data.csv";
+    public static final String SPEC_FILE = "realtime/realtime_spec.json";
 
     public static final DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss")
             .withZoneUTC();
